@@ -1,0 +1,40 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v2.0.0-id1" author="pavan">
+        <createTable tableName="company_entity">
+            <column name="id" type="BIGSERIAL" autoIncrement="true">
+                <constraints primaryKeyName="company_entity_id" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)" >
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex unique="true" tableName="company_entity" indexName="uk_company_entity_name">
+            <column name="name"></column>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="v2.0.0-id2" author="pavan">
+        <createTable tableName="result_entity">
+            <column name="id" type="BIGSERIAL" autoIncrement="true">
+                <constraints primaryKeyName="result_entity_id" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)" >
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex unique="true" tableName="result_entity" indexName="result_company_entity_name">
+            <column name="name"></column>
+        </createIndex>
+    </changeSet>
+
+
+
+</databaseChangeLog>
